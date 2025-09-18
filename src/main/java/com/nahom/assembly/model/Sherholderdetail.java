@@ -33,6 +33,7 @@ public class Sherholderdetail {
     private BigDecimal totalcapital;
     private BigDecimal sharesubsription;
     private int attendance;
+    @Column(name = "attendance_timestamp", columnDefinition = "datetime2(6)")
     private LocalDateTime attendanceTimestamp;
     private String fiscalyear;
     private BigDecimal votingsubscription;

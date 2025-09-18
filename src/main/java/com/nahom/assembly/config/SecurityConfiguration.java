@@ -34,7 +34,18 @@ public class SecurityConfiguration {
                 // .csrf(AbstractHttpConfigurer::disable)
                 .cors().and().csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/api/home", "/api/register/**", "/api/authenticate").permitAll();
+                    registry.requestMatchers("/api/home", 
+                    "/api/register/**", 
+                    "/api/authenticate",
+                    "/api/request/**",
+                    "/api/files/upload",
+                    "/actuator/**",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
+                    "/swagger-resources/**",
+                    "/webjars/**",
+                    "/swagger-ui.html"
+                    ).permitAll();
                     registry.requestMatchers("/api/admin/**").hasRole("ADMIN");
                     registry.requestMatchers("/api/user/**").hasRole("USER");
                     registry.anyRequest().authenticated();
